@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Industrial automation with AI monitoring">
-<rect width="480" height="320" fill="#F5F8FD"/>
-<g fill="none" stroke="#E3EAF6"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
-<rect x="30" y="228" width="420" height="22" rx="11" fill="#E8EEF9"/>
+<rect width="480" height="320" fill="#F6F7F9"/>
+<g fill="none" stroke="#E5E7EB"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
+<rect x="30" y="228" width="420" height="22" rx="11" fill="#ECEEF1"/>
 <g fill="#334155"><circle cx="60" cy="239" r="6"/><circle cx="120" cy="239" r="6"/><circle cx="180" cy="239" r="6"/><circle cx="240" cy="239" r="6"/><circle cx="300" cy="239" r="6"/><circle cx="360" cy="239" r="6"/><circle cx="420" cy="239" r="6"/></g>
 <rect x="60" y="190" width="46" height="38" rx="5" fill="#FBBC06"/><rect x="150" y="190" width="46" height="38" rx="5" fill="#FBBC06"/><rect x="330" y="190" width="46" height="38" rx="5" fill="#FBBC06"/>
-<g transform="translate(220 40)"><rect x="0" y="0" width="40" height="22" rx="5" fill="#E8EEF9" stroke="#2563EB"/><rect x="14" y="22" width="12" height="40" fill="#2563EB" opacity=".5"/>
-<path d="M20 62l0 0" /><rect x="-10" y="62" width="60" height="26" rx="6" fill="#FFFFFF" stroke="#2563EB"/><circle cx="20" cy="75" r="7" fill="#2563EB"/><circle cx="20" cy="75" r="2.5" fill="#0A1022"/></g>
-<path d="M240 128L200 190M240 128L280 190" stroke="#2563EB" stroke-opacity=".6" stroke-dasharray="4 5"/>
+<g transform="translate(220 40)"><rect x="0" y="0" width="40" height="22" rx="5" fill="#ECEEF1" stroke="#4B5563"/><rect x="14" y="22" width="12" height="40" fill="#4B5563" opacity=".5"/>
+<path d="M20 62l0 0" /><rect x="-10" y="62" width="60" height="26" rx="6" fill="#FFFFFF" stroke="#4B5563"/><circle cx="20" cy="75" r="7" fill="#4B5563"/><circle cx="20" cy="75" r="2.5" fill="#0A1022"/></g>
+<path d="M240 128L200 190M240 128L280 190" stroke="#4B5563" stroke-opacity=".6" stroke-dasharray="4 5"/>
 <rect x="198" y="190" width="0" height="0"/>
-<g stroke="#2563EB" stroke-width="2" fill="none"><rect x="146" y="184" width="54" height="50" rx="4" stroke-dasharray="6 5"/></g>
-<text x="173" y="176" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#2563EB">OK 99.2%</text>
+<g stroke="#4B5563" stroke-width="2" fill="none"><rect x="146" y="184" width="54" height="50" rx="4" stroke-dasharray="6 5"/></g>
+<text x="173" y="176" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#4B5563">OK 99.2%</text>
 <g transform="translate(330 40)"><rect width="120" height="84" rx="12" fill="#FFFFFF" stroke="#FBBC06" stroke-opacity=".7"/><text x="14" y="24" font-family="Inter,Arial,sans-serif" font-size="11" fill="#64748B">PLC · VFD</text>
-<rect x="14" y="36" width="92" height="8" rx="4" fill="#E3EAF6"/><rect x="14" y="36" width="64" height="8" rx="4" fill="#FBBC06"/><rect x="14" y="56" width="92" height="8" rx="4" fill="#E3EAF6"/><rect x="14" y="56" width="44" height="8" rx="4" fill="#2563EB"/></g>
-<g transform="translate(30 40)"><rect width="130" height="84" rx="12" fill="#FFFFFF" stroke="#2563EB" stroke-opacity=".6"/><path d="M14 66l22-20 18 12 26-30 30 18" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="14" y="22" font-family="Inter,Arial,sans-serif" font-size="11" fill="#64748B">Live sensors</text></g>
+<rect x="14" y="36" width="92" height="8" rx="4" fill="#E5E7EB"/><rect x="14" y="36" width="64" height="8" rx="4" fill="#FBBC06"/><rect x="14" y="56" width="92" height="8" rx="4" fill="#E5E7EB"/><rect x="14" y="56" width="44" height="8" rx="4" fill="#4B5563"/></g>
+<g transform="translate(30 40)"><rect width="130" height="84" rx="12" fill="#FFFFFF" stroke="#4B5563" stroke-opacity=".6"/><path d="M14 66l22-20 18 12 26-30 30 18" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="14" y="22" font-family="Inter,Arial,sans-serif" font-size="11" fill="#64748B">Live sensors</text></g>
 </svg>

@@ -12,8 +12,7 @@ window.NITHIL_CONFIG = {
   phoneTel: "+919842830590",
   whatsappNumber: "919842830590", // country code + number, digits only
   whatsappMessage: "Hello Nithil Innovations, I would like to discuss a project.",
-  location: "Erode, Tamil Nadu, India",
-  mapsUrl: "", // optional: paste your Google Maps place link for the "Get Directions" button
+  address: "96, Cholan Street, Chennimalai, Tamil Nadu 638051",
 
   // Social links – leave "" to hide an icon. Replace with official URLs when available.
   social: {

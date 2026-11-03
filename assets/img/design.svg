@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Graphic design and brand identity illustration">
-<rect width="480" height="320" fill="#F5F8FD"/>
-<g fill="none" stroke="#E3EAF6"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
+<rect width="480" height="320" fill="#F6F7F9"/>
+<g fill="none" stroke="#E5E7EB"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
 <rect x="46" y="48" width="188" height="224" rx="14" fill="#fff"/>
 <rect x="46" y="48" width="188" height="70" rx="14" fill="#FBBC06"/><rect x="46" y="100" width="188" height="18" fill="#FBBC06"/>
 <circle cx="86" cy="83" r="16" fill="#0A1022"/><rect x="112" y="72" width="90" height="9" rx="4" fill="#0A1022"/><rect x="112" y="88" width="60" height="7" rx="3" fill="#0A1022" opacity=".6"/>
 <rect x="64" y="140" width="150" height="9" rx="4" fill="#CBD5E1"/><rect x="64" y="158" width="120" height="9" rx="4" fill="#E2E8F0"/><rect x="64" y="176" width="140" height="9" rx="4" fill="#E2E8F0"/>
-<rect x="64" y="204" width="68" height="44" rx="8" fill="#2563EB" opacity=".85"/><rect x="146" y="204" width="68" height="44" rx="8" fill="#0A1022"/>
-<g transform="translate(262 60)"><rect width="172" height="112" rx="14" fill="#FFFFFF" stroke="#2563EB" stroke-opacity=".5"/>
-<circle cx="30" cy="30" r="9" fill="#FBBC06"/><circle cx="58" cy="30" r="9" fill="#2563EB"/><circle cx="86" cy="30" r="9" fill="#1D4ED8"/><circle cx="114" cy="30" r="9" fill="#F8FAFC"/>
-<path d="M22 84c20-30 40 20 62-6s40-20 66 4" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/><rect x="22" y="94" width="60" height="6" rx="3" fill="#334155"/></g>
+<rect x="64" y="204" width="68" height="44" rx="8" fill="#4B5563" opacity=".85"/><rect x="146" y="204" width="68" height="44" rx="8" fill="#0A1022"/>
+<g transform="translate(262 60)"><rect width="172" height="112" rx="14" fill="#FFFFFF" stroke="#4B5563" stroke-opacity=".5"/>
+<circle cx="30" cy="30" r="9" fill="#FBBC06"/><circle cx="58" cy="30" r="9" fill="#4B5563"/><circle cx="86" cy="30" r="9" fill="#1F2937"/><circle cx="114" cy="30" r="9" fill="#F8FAFC"/>
+<path d="M22 84c20-30 40 20 62-6s40-20 66 4" fill="none" stroke="#4B5563" stroke-width="3" stroke-linecap="round"/><rect x="22" y="94" width="60" height="6" rx="3" fill="#334155"/></g>
 <g transform="translate(262 190)"><rect width="80" height="80" rx="14" fill="#fff"/><path d="M40 16l14 28H26z" fill="#FBBC06"/><circle cx="40" cy="54" r="12" fill="#0A1022"/>
-<rect x="92" width="80" height="80" rx="14" fill="#2563EB"/><path d="M110 56l16-32 16 32z" fill="#0A1022"/><circle cx="148" cy="30" r="9" fill="#fff"/></g>
+<rect x="92" width="80" height="80" rx="14" fill="#4B5563"/><path d="M110 56l16-32 16 32z" fill="#0A1022"/><circle cx="148" cy="30" r="9" fill="#fff"/></g>
 </svg>

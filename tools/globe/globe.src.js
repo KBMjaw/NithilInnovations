@@ -1,93 +1,94 @@
 /*
- * Rotating 3D globe for the "Build Smarter. Move Faster." section.
- * Vanilla-JS port of the supplied amCharts 5 Chart Maker (React) config:
- * orthographic projection, rotateX/rotateY panning, 30s auto-rotation,
- * transparent background, country hover, zoom + home controls.
+ * Rotating 3D globe (orthographic) – d3-geo + Natural Earth data (public domain).
+ * Auto-rotation (~30 s/turn), drag to rotate, country hover, zoom / home buttons,
+ * transparent canvas so it blends with the page background.
  */
-import * as am5 from "@amcharts/amcharts5";
-import * as am5map from "@amcharts/amcharts5/map";
-import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+import { geoOrthographic, geoPath, geoGraticule10, geoContains, geoDistance } from "d3-geo";
+import { feature } from "topojson-client";
+import world from "world-atlas/countries-110m.json";
 
-function init(el, opts) {
-  opts = opts || {};
-  var land = am5.color(0xc9d8f3), hover = am5.color(0x2563eb), sea = am5.color(0xeaf1fd);
+var HQ = [77.6076, 11.1609]; // Chennimalai, Tamil Nadu
+
+function init(el) {
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var countries = feature(world, world.objects.countries).features.filter(function (f) { return f.properties.name !== "Antarctica"; });
+  var sphere = { type: "Sphere" }, grat = geoGraticule10();
 
-  var root = am5.Root.new(el);
-  root.setThemes([am5themes_Animated.new(root)]);
-  root.interfaceColors.set("primaryButton", am5.color(0xffffff));
-  root.interfaceColors.set("primaryButtonHover", am5.color(0xeff4ff));
-  root.interfaceColors.set("primaryButtonText", am5.color(0x0a1022));
-  root.interfaceColors.set("primaryButtonActive", am5.color(0xdbe7ff));
-  root.interfaceColors.set("alternativeText", am5.color(0x0a1022));
+  var canvas = document.createElement("canvas");
+  canvas.setAttribute("aria-hidden", "true");
+  var tip = document.createElement("div"); tip.className = "globe-tip";
+  var ctrl = document.createElement("div"); ctrl.className = "globe-ctrl";
+  ctrl.innerHTML = '<button type="button" data-z="in" aria-label="Zoom in">+</button><button type="button" data-z="out" aria-label="Zoom out">−</button><button type="button" data-z="home" aria-label="Reset view">⌂</button>';
+  el.appendChild(canvas); el.appendChild(tip); el.appendChild(ctrl);
+  var ctx = canvas.getContext("2d");
 
-  var chart = root.container.children.push(am5map.MapChart.new(root, {
-    projection: am5map.geoOrthographic(),
-    panX: "rotateX", panY: "rotateY",
-    rotationX: -77.7, rotationY: -15, // start facing India (Erode)
-    minZoomLevel: 0.5, zoomLevel: 0.95, homeZoomLevel: 0.95, autoHome: true,
-    animationDuration: 800, boxZoom: "shift",
-    wheelY: "none", wheelX: "none" // keep page scrolling; use +/- buttons or pinch
-  }));
+  var proj = geoOrthographic().clipAngle(90).precision(0.5);
+  var path = geoPath(proj, ctx);
+  var rot = [-HQ[0], -15], k = 1, kt = 1, w = 0, h = 0, base = 100;
+  var hover = null, dragging = false, last = null, paused = false, visible = true, resumeAt = 0;
 
-  // Transparent chart background (blends with the white page)
-  chart.chartContainer.get("background").setAll({ fill: am5.color(0xffffff), fillOpacity: 0 });
-
-  // Zoom + home controls
-  var zc = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-  zc.homeButton.set("visible", true);
-
-  // Soft sphere (whole-world rectangle), as in the reference config
-  var sphere = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
-  sphere.mapPolygons.template.setAll({ fill: sea, fillOpacity: 0.9, strokeOpacity: 0 });
-  sphere.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
-
-  // Graticule
-  var grat = chart.series.push(am5map.GraticuleSeries.new(root, {}));
-  grat.mapLines.template.setAll({ stroke: am5.color(0x2563eb), strokeOpacity: 0.1 });
-
-  // Countries
-  var countries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_worldLow, exclude: ["AQ"]
-  }));
-  countries.mapPolygons.template.setAll({
-    tooltipText: "{name}", interactive: true, fill: land, stroke: am5.color(0xffffff), strokeWidth: 0.5
-  });
-  countries.mapPolygons.template.states.create("hover", { fill: hover, fillOpacity: 1 });
-  countries.mapPolygons.template.states.create("active", { fill: hover, fillOpacity: 1 });
-
-  // HQ marker (Erode, Tamil Nadu)
-  var pts = chart.series.push(am5map.MapPointSeries.new(root, {}));
-  pts.bullets.push(function () {
-    var c = am5.Container.new(root, {});
-    var pulse = c.children.push(am5.Circle.new(root, { radius: 6, fill: am5.color(0xfbbc06), fillOpacity: 0.5 }));
-    if (!reduce) {
-      pulse.animate({ key: "radius", from: 6, to: 20, duration: 1800, loops: Infinity });
-      pulse.animate({ key: "fillOpacity", from: 0.5, to: 0, duration: 1800, loops: Infinity });
-    }
-    c.children.push(am5.Circle.new(root, {
-      radius: 5, fill: am5.color(0xfbbc06), stroke: am5.color(0x0a1022), strokeWidth: 1.5,
-      tooltipText: "Nithil Innovations – Erode, Tamil Nadu", cursorOverStyle: "pointer"
-    }));
-    return am5.Bullet.new(root, { sprite: c });
-  });
-  pts.data.push({ geometry: { type: "Point", coordinates: [77.7172, 11.341] } });
-
-  // Smooth auto-rotation; pauses while the user hovers/drags, resumes after
-  var spinning = null;
-  function spin() {
-    if (reduce || spinning) return;
-    var from = chart.get("rotationX");
-    spinning = chart.animate({ key: "rotationX", from: from, to: from + 360, duration: 30000, loops: Infinity, easing: am5.ease.linear });
+  function resize() {
+    var r = el.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr; canvas.style.width = w + "px"; canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    base = Math.min(w, h) / 2 - 6;
   }
-  function pause() { if (spinning) { spinning.stop(); spinning = null; } }
-  chart.chartContainer.events.on("pointerover", pause);
-  chart.chartContainer.events.on("pointerout", spin);
-  chart.appear(1000, 100);
-  spin();
 
-  return { root: root, chart: chart };
+  function draw() {
+    proj.scale(base * k).translate([w / 2, h / 2]).rotate(rot);
+    ctx.clearRect(0, 0, w, h);
+    ctx.beginPath(); path(sphere); ctx.fillStyle = "#F3F4F6"; ctx.fill(); ctx.strokeStyle = "#E5E7EB"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.beginPath(); path(grat); ctx.strokeStyle = "rgba(107,114,128,.18)"; ctx.lineWidth = 0.5; ctx.stroke();
+    ctx.lineWidth = 0.6; ctx.strokeStyle = "#fff";
+    for (var i = 0; i < countries.length; i++) {
+      ctx.beginPath(); path(countries[i]);
+      ctx.fillStyle = countries[i] === hover ? "#374151" : "#D5DAE1"; ctx.fill(); ctx.stroke();
+    }
+    // HQ marker (only when on the visible hemisphere)
+    if (geoDistance(HQ, [-rot[0], -rot[1]]) < Math.PI / 2 - 0.05) {
+      var p = proj(HQ);
+      ctx.beginPath(); ctx.arc(p[0], p[1], 9, 0, 6.283); ctx.fillStyle = "rgba(251,188,6,.28)"; ctx.fill();
+      ctx.beginPath(); ctx.arc(p[0], p[1], 4.5, 0, 6.283); ctx.fillStyle = "#FBBC06"; ctx.fill(); ctx.strokeStyle = "#111827"; ctx.lineWidth = 1.2; ctx.stroke();
+    }
+  }
+
+  var prev = 0;
+  function frame(t) {
+    var dt = prev ? Math.min(t - prev, 60) : 16; prev = t;
+    if (visible) {
+      if (Math.abs(kt - k) > 0.002) k += (kt - k) * 0.15; else k = kt;
+      if (!reduce && !paused && !dragging && t > resumeAt) rot[0] += dt * 0.012; // 12°/s ≈ 30 s per turn
+      draw();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function pos(e) { var r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  function pick(p) {
+    var inv = proj.invert(p); if (!inv) return null;
+    if (geoDistance(inv, [-rot[0], -rot[1]]) > Math.PI / 2) return null;
+    for (var i = 0; i < countries.length; i++) if (geoContains(countries[i], inv)) return countries[i];
+    return null;
+  }
+  canvas.addEventListener("pointerdown", function (e) { dragging = true; last = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); el.classList.add("grab"); });
+  canvas.addEventListener("pointermove", function (e) {
+    if (dragging) {
+      var s = 0.3 / k; rot[0] += (e.clientX - last[0]) * s; rot[1] = Math.max(-80, Math.min(80, rot[1] - (e.clientY - last[1]) * s)); last = [e.clientX, e.clientY]; tip.style.opacity = 0; return;
+    }
+    var p = pos(e); hover = pick(p); paused = true;
+    if (hover) { tip.textContent = hover.properties.name; tip.style.left = p[0] + "px"; tip.style.top = p[1] + "px"; tip.style.opacity = 1; } else tip.style.opacity = 0;
+  });
+  function release() { dragging = false; el.classList.remove("grab"); }
+  canvas.addEventListener("pointerup", release); canvas.addEventListener("pointercancel", release);
+  canvas.addEventListener("pointerleave", function () { hover = null; paused = false; tip.style.opacity = 0; resumeAt = performance.now() + 600; });
+  ctrl.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return; var a = b.getAttribute("data-z");
+    if (a === "in") kt = Math.min(2.6, kt * 1.35); else if (a === "out") kt = Math.max(0.6, kt / 1.35); else { kt = 1; rot = [-HQ[0], -15]; }
+  });
+
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { threshold: 0 }).observe(el);
+  if ("ResizeObserver" in window) new ResizeObserver(resize).observe(el); else window.addEventListener("resize", resize);
+  resize(); requestAnimationFrame(frame);
 }
-
 window.NithilGlobe = { init: init };

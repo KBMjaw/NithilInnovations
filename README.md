@@ -17,13 +17,13 @@ assets/img/           logo, favicons, og-image, SVG illustrations
 2. **Enquiry form** → create a free key at https://web3forms.com (enter the inbox that should receive enquiries) and paste it into `form.accessKey` in `config.js`. Until then the form opens the visitor's email app with the details pre-filled.
 3. **Portfolio** → replace the sample cards in the `#portfolio` section (marked with an `EDIT HERE` comment) with real projects.
 4. **Domain** → set `nithilinnovations.com` in your host's dashboard. For GitHub Pages add a `CNAME` file containing the domain.
-5. **Colours** → `:root` variables at the top of `style.css` (`--brand` is the logo yellow `#FBBC06`).
+5. **Colours** → `:root` variables at the top of `style.css` (`--gold` is the logo yellow `#FBBC06`, used sparingly).
 
 ## Tamil (future)
 Keep all visible copy in `index.html`; to add Tamil later, duplicate it as `ta/index.html` with `lang="ta"` and add `hreflang` links.
 
 ## Interactive globe
-`assets/vendor/globe.bundle.js` is a pre-built (minified) amCharts 5 bundle, loaded lazily when the "Build Smarter. Move Faster." section scrolls into view. Source: `tools/globe/globe.src.js` (rebuild with `cd tools/globe && npm install && npm run build`). The free amCharts licence shows a small amCharts logo; a commercial licence removes it.
+`assets/vendor/globe.bundle.js` is a small pre-built bundle (d3-geo + Natural Earth data, no attribution logo), loaded lazily when the "Build Smarter. Move Faster." section scrolls into view. Source: `tools/globe/globe.src.js` (rebuild with `cd tools/globe && npm install && npm run build`).
 
 ## Google Maps
-In `index.html`, find the `<iframe>` inside `.mapbox` and replace its `src` with the `src` from your official Google Maps embed code.
+The official Nithil Innovations embed is already set in the `.mapbox` iframe in `index.html`.
