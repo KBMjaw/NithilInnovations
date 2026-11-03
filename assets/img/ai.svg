@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="AI and machine learning illustration">
+<rect width="480" height="320" fill="#0B1226"/>
+<g fill="none" stroke="#1E2A4A"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
+<g stroke="#22D3EE" stroke-opacity=".45" stroke-width="1.5">
+<path d="M70 70L190 60M70 70L190 140M70 70L190 220M70 160L190 60M70 160L190 140M70 160L190 220M70 250L190 60M70 250L190 140M70 250L190 220"/>
+<path d="M190 60L310 100M190 60L310 200M190 140L310 100M190 140L310 200M190 220L310 100M190 220L310 200M310 100L410 160M310 200L410 160"/></g>
+<g fill="#22D3EE"><circle cx="70" cy="70" r="11"/><circle cx="70" cy="160" r="11"/><circle cx="70" cy="250" r="11"/></g>
+<g fill="#3B82F6"><circle cx="190" cy="60" r="11"/><circle cx="190" cy="140" r="11"/><circle cx="190" cy="220" r="11"/></g>
+<g fill="#22D3EE"><circle cx="310" cy="100" r="11"/><circle cx="310" cy="200" r="11"/></g>
+<circle cx="410" cy="160" r="26" fill="#FBBC06"/><text x="410" y="167" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="20" fill="#0A1022">AI</text>
+<circle cx="410" cy="160" r="40" fill="none" stroke="#FBBC06" stroke-opacity=".4" stroke-dasharray="3 6"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Web and software development illustration">
+<rect width="480" height="320" fill="#0B1226"/>
+<g fill="none" stroke="#1E2A4A"><path d="M0 80h480M0 160h480M0 240h480M120 0v320M240 0v320M360 0v320"/></g>
+<g transform="translate(40 40)"><rect width="270" height="190" rx="14" fill="#111B38" stroke="#22D3EE" stroke-opacity=".5"/>
+<rect width="270" height="30" rx="14" fill="#16224A"/><rect y="16" width="270" height="14" fill="#16224A"/>
+<circle cx="18" cy="15" r="5" fill="#FB7185"/><circle cx="36" cy="15" r="5" fill="#FBBC06"/><circle cx="54" cy="15" r="5" fill="#34D399"/>
+<g font-family="Menlo,Consolas,monospace" font-size="12"><text x="20" y="60" fill="#22D3EE">const</text><text x="64" y="60" fill="#E2E8F0">app</text><text x="92" y="60" fill="#FBBC06">=</text><text x="106" y="60" fill="#A5B4FC">await</text><text x="148" y="60" fill="#E2E8F0">build()</text>
+<text x="20" y="86" fill="#94A3B8">// API · ERP · Dashboard</text><text x="20" y="112" fill="#22D3EE">route</text><text x="62" y="112" fill="#E2E8F0">(</text><text x="70" y="112" fill="#34D399">"/orders"</text><text x="130" y="112" fill="#E2E8F0">)</text>
+<text x="20" y="138" fill="#A5B4FC">deploy</text><text x="66" y="138" fill="#E2E8F0">()</text></g>
+<rect x="20" y="152" width="110" height="10" rx="5" fill="#FBBC06"/></g>
+<g transform="translate(290 90)"><rect width="150" height="190" rx="14" fill="#fff"/><rect x="14" y="16" width="122" height="52" rx="8" fill="#0A1022"/>
+<path d="M24 56l22-20 16 12 26-24 24 18" fill="none" stroke="#22D3EE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="14" y="82" width="56" height="40" rx="8" fill="#FEF3C7"/><rect x="80" y="82" width="56" height="40" rx="8" fill="#CFFAFE"/>
+<rect x="14" y="136" width="122" height="9" rx="4" fill="#CBD5E1"/><rect x="14" y="154" width="86" height="9" rx="4" fill="#E2E8F0"/></g>
+</svg>
