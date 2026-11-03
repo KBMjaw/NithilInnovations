@@ -21,3 +21,9 @@ assets/img/           logo, favicons, og-image, SVG illustrations
 
 ## Tamil (future)
 Keep all visible copy in `index.html`; to add Tamil later, duplicate it as `ta/index.html` with `lang="ta"` and add `hreflang` links.
+
+## Interactive globe
+`assets/vendor/globe.bundle.js` is a pre-built (minified) amCharts 5 bundle, loaded lazily when the "Build Smarter. Move Faster." section scrolls into view. Source: `tools/globe/globe.src.js` (rebuild with `cd tools/globe && npm install && npm run build`). The free amCharts licence shows a small amCharts logo; a commercial licence removes it.
+
+## Google Maps
+In `index.html`, find the `<iframe>` inside `.mapbox` and replace its `src` with the `src` from your official Google Maps embed code.

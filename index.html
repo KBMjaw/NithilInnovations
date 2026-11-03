@@ -216,7 +216,7 @@
 </section>
 
 <!-- INDUSTRIES -->
-<section class="section section--dark" id="industries">
+<section class="section" id="industries">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Industries We Serve</span>
@@ -237,7 +237,7 @@
 </section>
 
 <!-- PORTFOLIO -->
-<section class="section" id="portfolio">
+<section class="section section--grey" id="portfolio">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Our Projects / Portfolio</span>
@@ -286,7 +286,7 @@
 </section>
 
 <!-- WHY US -->
-<section class="section section--grey" id="why-us">
+<section class="section" id="why-us">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Why Choose Us?</span>
@@ -311,7 +311,7 @@
 </section>
 
 <!-- TECH STACK -->
-<section class="section section--dark" id="technology">
+<section class="section section--grey" id="technology">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Our Technology Stack</span>
@@ -327,61 +327,93 @@
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section class="cta-band">
-  <div class="container">
-    <div><h2>Ready to automate and transform your business?</h2><p>Tell us about your project – we'll respond with a tailored proposal.</p></div>
-    <a class="btn btn--dark" href="#contact">Get a Quote <svg><use href="#i-arrow"/></svg></a>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="section" id="contact">
-  <div class="container contact">
-    <div class="contact__info reveal">
+  <div class="container">
+    <div class="contact-head reveal">
       <span class="eyebrow">Contact Us</span>
       <h2>Let's build something intelligent</h2>
       <p>Share a few details and we'll get back to you. Pricing is customised to each project, so request a consultation for a tailored quote.</p>
-      <ul class="info-list">
-        <li><span class="ico"><svg><use href="#i-phone"/></svg></span><div><small>Phone / WhatsApp</small><a data-cfg="phone"></a></div></li>
-        <li><span class="ico"><svg><use href="#i-mail"/></svg></span><div><small>Email</small><a data-cfg="email"></a></div></li>
-        <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><small>Location</small><span data-cfg="location"></span></div></li>
-      </ul>
-      <div class="quick">
-        <a class="btn btn--wa" data-cfg="whatsapp-btn" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> WhatsApp</a>
-        <a class="btn btn--dark" data-cfg="call-btn"><svg><use href="#i-phone"/></svg> Call Now</a>
-        <a class="btn btn--outline" data-cfg="email-btn"><svg><use href="#i-mail"/></svg> Email Us</a>
-      </div>
-      <div class="socials" data-social></div>
     </div>
 
-    <form class="form reveal" id="enquiry-form" novalidate>
-      <h3>Request a consultation</h3>
-      <p>Fields marked <em style="color:#DC2626;font-style:normal">*</em> are required.</p>
-      <div class="field hp" aria-hidden="true"><label>Leave empty<input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
-      <div class="form__grid">
-        <div class="field"><label for="f-name">Name <em>*</em></label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your full name"></div>
-        <div class="field"><label for="f-company">Company Name</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Your company"></div>
-        <div class="field"><label for="f-email">Email Address <em>*</em></label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
-        <div class="field"><label for="f-phone">Phone Number <em>*</em></label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 …" pattern="[0-9+\-\s()]{8,18}"></div>
-        <div class="field field--full"><label for="f-service">Service Interested In <em>*</em></label>
-          <select id="f-service" name="service" required>
-            <option value="">Select a service</option>
-            <option>Graphic Design &amp; Corporate Communication</option>
-            <option>Web &amp; Software Development</option>
-            <option>AI-Powered Solutions &amp; Intelligent Automation</option>
-            <option>Industrial Automation (PLC / VFD Integration)</option>
-            <option>Computer Vision / CCTV Monitoring</option>
-            <option>Other / Not sure yet</option>
-          </select></div>
-        <div class="field field--full"><label for="f-msg">Project Description <em>*</em></label><textarea id="f-msg" name="message" required minlength="10" placeholder="Tell us about your requirement, current process and goals…"></textarea></div>
+    <div class="contact-cards reveal">
+      <a class="ccard" data-cfg="phone-card"><span class="ico"><svg><use href="#i-phone"/></svg></span><div><small>Phone</small><strong data-cfg="phone-text"></strong></div></a>
+      <a class="ccard" data-cfg="email-card"><span class="ico"><svg><use href="#i-mail"/></svg></span><div><small>Email</small><strong data-cfg="email-text"></strong></div></a>
+      <a class="ccard" data-cfg="whatsapp-btn" target="_blank" rel="noopener"><span class="ico"><svg><use href="#i-wa"/></svg></span><div><small>WhatsApp</small><strong data-cfg="phone-text"></strong></div></a>
+      <div class="ccard"><span class="ico"><svg><use href="#i-pin"/></svg></span><div><small>Office Address</small><strong data-cfg="location"></strong></div></div>
+    </div>
+
+    <div class="contact-grid">
+      <form class="form reveal" id="enquiry-form" novalidate>
+        <h3>Request a consultation</h3>
+        <p>Fields marked <em style="color:#DC2626;font-style:normal">*</em> are required.</p>
+        <div class="field hp" aria-hidden="true"><label>Leave empty<input type="text" name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+        <div class="form__grid">
+          <div class="field"><label for="f-name">Name <em>*</em></label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your full name"></div>
+          <div class="field"><label for="f-company">Company Name</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Your company"></div>
+          <div class="field"><label for="f-email">Email Address <em>*</em></label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"></div>
+          <div class="field"><label for="f-phone">Phone Number <em>*</em></label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 …" pattern="[0-9+\-\s()]{8,18}"></div>
+          <div class="field field--full"><label for="f-service">Service Interested In <em>*</em></label>
+            <select id="f-service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Graphic Design &amp; Corporate Communication</option>
+              <option>Web &amp; Software Development</option>
+              <option>AI-Powered Solutions &amp; Intelligent Automation</option>
+              <option>Industrial Automation (PLC / VFD Integration)</option>
+              <option>Computer Vision / CCTV Monitoring</option>
+              <option>Other / Not sure yet</option>
+            </select></div>
+          <div class="field field--full"><label for="f-msg">Project Description <em>*</em></label><textarea id="f-msg" name="message" required minlength="10" placeholder="Tell us about your requirement, current process and goals…"></textarea></div>
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit" id="submit-btn">Submit Enquiry <svg><use href="#i-arrow"/></svg></button>
+          <span class="privacy">We use your details only to respond to your enquiry.</span>
+        </div>
+        <div class="form__status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="mapbox reveal">
+        <!--
+          GOOGLE MAPS EMBED (office location)
+          The src below is a TEMPORARY placeholder that only shows Erode.
+          Replace the whole src value with the "src" from your official Google Maps
+          iframe (Google Maps → Share → Embed a map → Copy HTML). Keep everything else.
+        -->
+        <iframe title="Nithil Innovations office location on Google Maps"
+          src="https://www.google.com/maps?q=Erode,+Tamil+Nadu,+India&amp;output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="mapbox__bar">
+          <div><strong>Nithil Innovations</strong><span data-cfg="location"></span></div>
+          <a class="btn btn--outline" data-cfg="directions-btn" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg> Get Directions</a>
+        </div>
       </div>
-      <div class="form__actions">
-        <button class="btn btn--primary" type="submit" id="submit-btn">Submit Enquiry <svg><use href="#i-arrow"/></svg></button>
-        <span class="privacy">We use your details only to respond to your enquiry.</span>
+    </div>
+
+    <div class="quick reveal">
+      <a class="btn btn--wa" data-cfg="whatsapp-btn" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Chat on WhatsApp</a>
+      <a class="btn btn--dark" data-cfg="call-btn"><svg><use href="#i-phone"/></svg> Call Now</a>
+      <a class="btn btn--outline" data-cfg="email-btn"><svg><use href="#i-mail"/></svg> Email Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL PROMO + INTERACTIVE GLOBE -->
+<section class="promo" id="global">
+  <div class="container promo__grid">
+    <div class="reveal">
+      <span class="eyebrow">Global Presence</span>
+      <h2>Build Smarter. <span>Move Faster.</span></h2>
+      <p>Turn imagination into reality — with innovation that moves fast.</p>
+      <div class="promo__cta">
+        <a class="btn btn--primary" href="#contact">Start your project <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" data-cfg="whatsapp-btn" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> WhatsApp us</a>
       </div>
-      <div class="form__status" id="form-status" role="status" aria-live="polite"></div>
-    </form>
+      <ul class="promo__points"><li>Based in Erode, Tamil Nadu</li><li>Serving businesses across India</li><li>Remote delivery worldwide</li></ul>
+    </div>
+    <div class="globe-wrap reveal">
+      <div id="globe" role="img" aria-label="Interactive rotating 3D globe. Drag to rotate, use the buttons to zoom."></div>
+      <p class="globe-hint">Drag to rotate · use + / − to zoom · hover a country</p>
+    </div>
   </div>
 </section>
 
@@ -391,13 +423,13 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <img src="assets/img/logo-light.png" alt="Nithil Innovations" width="113" height="46">
-        <p>Innovate. Automate. Transform.<br>AI, software, design and industrial automation for modern businesses.</p>
+        <img src="assets/img/logo.png" alt="Nithil Innovations" width="113" height="46" loading="lazy">
+        <p>Nithil Innovations is a technology and innovation company building intelligent solutions through AI, software development, graphic design and industrial automation.</p>
         <div class="socials" data-social></div>
       </div>
-      <div><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div><h4>Solutions</h4><ul><li><a href="#solutions">Graphic Design</a></li><li><a href="#solutions">Web &amp; Software</a></li><li><a href="#solutions">AI &amp; Automation</a></li><li><a href="#industries">Industries</a></li></ul></div>
-      <div><h4>Get in touch</h4><ul><li><a data-cfg="phone"></a></li><li><a data-cfg="email"></a></li><li data-cfg="location"></li></ul></div>
+      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#why-us">Why Choose Us</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Our Services</h4><ul><li><a href="#solutions">Graphic Design &amp; Branding</a></li><li><a href="#solutions">Web &amp; Software Development</a></li><li><a href="#solutions">AI &amp; Machine Learning</a></li><li><a href="#solutions">Industrial Automation</a></li><li><a href="#industries">Industries We Serve</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a data-cfg="phone"></a></li><li><a data-cfg="email"></a></li><li data-cfg="location"></li></ul></div>
     </div>
     <div class="footer__bottom">
       <span>© <span id="year">2025</span> Nithil Innovations. All rights reserved.</span>

@@ -1,0 +1,11 @@
+{
+  "name": "nithil-globe-build",
+  "private": true,
+  "description": "Builds assets/vendor/globe.bundle.js (amCharts 5 rotating globe). Only needed if you change globe.src.js.",
+  "scripts": { "build": "esbuild globe.src.js --bundle --minify --format=iife --target=es2018 --outfile=../../assets/vendor/globe.bundle.js" },
+  "dependencies": {
+    "@amcharts/amcharts5": "5.21.5",
+    "@amcharts/amcharts5-geodata": "5.1.6"
+  },
+  "devDependencies": { "esbuild": "^0.25.0" }
+}

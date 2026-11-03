@@ -13,6 +13,11 @@
       case "email": el.textContent = C.email; el.href = "mailto:" + C.email; break;
       case "location": el.textContent = C.location; break;
       case "whatsapp-btn": el.href = waUrl; break;
+      case "phone-card": el.href = "tel:" + C.phoneTel; break;
+      case "email-card": el.href = "mailto:" + C.email; break;
+      case "phone-text": el.textContent = C.phoneDisplay; break;
+      case "email-text": el.textContent = C.email; break;
+      case "directions-btn": el.href = C.mapsUrl || ("https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Nithil Innovations, " + C.location)); break;
       case "call-btn": el.href = "tel:" + C.phoneTel; break;
       case "email-btn": el.href = "mailto:" + C.email; break;
     }
@@ -63,6 +68,27 @@
     $$(".reveal").forEach(function (el) { rv.observe(el); });
   } else {
     $$(".reveal").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- Interactive globe (amCharts 5, loaded only when near viewport) ---------- */
+  var globeEl = $("#globe");
+  function loadGlobe() {
+    var sc = document.createElement("script");
+    sc.src = "assets/vendor/globe.bundle.js";
+    sc.onload = function () { try { window.NithilGlobe.init(globeEl); } catch (e) { globeFail(); } };
+    sc.onerror = globeFail;
+    document.body.appendChild(sc);
+  }
+  function globeFail() {
+    globeEl.innerHTML = '<div class="globe-fallback">Interactive globe unavailable</div>';
+  }
+  if (globeEl) {
+    if ("IntersectionObserver" in window) {
+      var go = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { go.disconnect(); loadGlobe(); }
+      }, { rootMargin: "400px 0px" });
+      go.observe(globeEl);
+    } else { loadGlobe(); }
   }
 
   /* ---------- Portfolio filter ---------- */
