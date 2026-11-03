@@ -70,7 +70,7 @@
       <a href="#about">About</a>
       <a href="#solutions">Solutions</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#technology">Technology</a>
+      <a href="blog/">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -204,19 +204,14 @@
   </div>
 </section>
 
-<!-- TECHNOLOGY -->
-<section class="section" id="technology">
+<!-- BLOG (shown only when published posts exist) -->
+<section class="section" id="blog" hidden>
   <div class="container">
-    <div class="reveal">
-      <span class="eyebrow">Technology</span>
-      <h2>Tools We Work With</h2>
+    <div class="head-row reveal">
+      <div><span class="eyebrow">Blog</span><h2>Latest Insights</h2></div>
+      <a class="link" href="blog/">All articles <svg><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="tech">
-      <div class="reveal"><h3>AI &amp; Vision</h3><ul><li>Python</li><li>PyTorch / TensorFlow</li><li>OpenCV</li><li>YOLO</li></ul></div>
-      <div class="reveal"><h3>Web &amp; Software</h3><ul><li>HTML / CSS / JavaScript</li><li>React / Next.js</li><li>FastAPI / Node.js</li><li>REST APIs</li></ul></div>
-      <div class="reveal"><h3>Data &amp; Cloud</h3><ul><li>PostgreSQL</li><li>Supabase</li><li>Docker</li><li>Vercel / GitHub</li></ul></div>
-      <div class="reveal"><h3>Industrial &amp; Design</h3><ul><li>PLC / VFD / Modbus</li><li>RTSP / CCTV</li><li>Raspberry Pi</li><li>Figma / Adobe</li></ul></div>
-    </div>
+    <div class="posts" id="home-posts"></div>
   </div>
 </section>
 
@@ -295,7 +290,7 @@
         <p>Technology company building AI, software, design and industrial automation solutions.</p>
         <div class="socials" data-social></div>
       </div>
-      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#technology">Technology</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="blog/">Blog</a></li><li><a href="#contact">Contact</a></li></ul></div>
       <div><h4>Services</h4><ul><li><a href="#solutions">Graphic Design</a></li><li><a href="#solutions">Web &amp; Software</a></li><li><a href="#solutions">AI &amp; Automation</a></li></ul></div>
       <div><h4>Contact</h4><ul><li data-cfg-text="address"></li><li><a data-cfg="phone" data-cfg-text="phone"></a></li><li><a data-cfg="email" data-cfg-text="email"></a></li></ul></div>
     </div>
@@ -309,6 +304,7 @@
 <a class="wa-float" data-cfg="whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg><use href="#i-wa"/></svg></a>
 
 <script src="assets/js/config.js"></script>
+<script src="assets/js/blog-api.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -23,6 +23,15 @@ window.NITHIL_CONFIG = {
   },
 
   /*
+   * Blog backend (Supabase). Run supabase/blog.sql once, then paste the project URL and the
+   * publishable (anon) key here. The anon key is safe to expose – Row Level Security protects writes.
+   */
+  supabase: {
+    url: "",     // e.g. "https://xxxx.supabase.co"
+    anonKey: ""  // publishable / anon key
+  },
+
+  /*
    * Enquiry form delivery (works on Vercel, Netlify and GitHub Pages – no server needed).
    * 1. Go to https://web3forms.com, enter the email that should receive enquiries.
    * 2. Paste the free "Access Key" they email you below.

@@ -37,7 +37,7 @@
   $$("a", menu).forEach(function (a) { a.addEventListener("click", closeMenu); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
 
-  var links = $$(".nav__links a");
+  var links = $$(".nav__links a[href^='#']");
   if ("IntersectionObserver" in window) {
     var spy = new IntersectionObserver(function (en) {
       en.forEach(function (x) {
@@ -68,7 +68,18 @@
   }
 
   /* ---------- Enquiry form ---------- */
+  /* ---------- Latest posts on the home page ---------- */
+  var homePosts = $("#home-posts");
+  if (homePosts && window.NithilBlog && NithilBlog.configured()) {
+    NithilBlog.listPublished(3).then(function (posts) {
+      if (!posts.length) return;
+      homePosts.innerHTML = posts.map(function (p) { return NithilBlog.card(p, "blog/"); }).join("");
+      $("#blog").hidden = false;
+    }).catch(function () {});
+  }
+
   var form = $("#enquiry-form"), status = $("#form-status"), btn = $("#submit-btn");
+  if (!form) return;
   function show(type, msg) { status.className = "form__status " + type; status.textContent = msg; }
   function mailto(d) {
     var body = "Name: " + d.name + "\nCompany: " + (d.company || "-") + "\nEmail: " + d.email + "\nPhone: " + d.phone +

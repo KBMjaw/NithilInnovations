@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog Admin | Nithil Innovations</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin">
+<header class="adm-bar">
+  <a href="../" class="brand"><img src="../assets/img/logo.png" alt="Nithil Innovations" height="34"></a>
+  <span class="adm-title">Blog Admin</span>
+  <div class="adm-user" id="user" hidden><span id="user-email"></span><button class="btn btn--line" id="logout" type="button">Log out</button></div>
+</header>
+
+<main class="adm-main">
+  <p class="notice" id="notice" hidden></p>
+
+  <!-- Login -->
+  <section id="view-login" class="card-box login" hidden>
+    <h1>Admin sign in</h1>
+    <form id="login-form">
+      <div class="field"><label for="email">Email</label><input id="email" type="email" required autocomplete="username"></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" required autocomplete="current-password"></div>
+      <button class="btn" type="submit" id="login-btn">Sign in</button>
+      <p class="status" id="login-status" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Post list -->
+  <section id="view-list" hidden>
+    <div class="adm-head"><h1>Posts</h1><button class="btn" id="new-post" type="button">New post</button></div>
+    <div class="card-box"><table class="tbl"><thead><tr><th>Title</th><th>Status</th><th>Updated</th><th></th></tr></thead><tbody id="rows"></tbody></table>
+      <p class="muted" id="empty" hidden>No posts yet. Click "New post".</p></div>
+  </section>
+
+  <!-- Editor -->
+  <section id="view-edit" hidden>
+    <div class="adm-head"><h1 id="edit-heading">New post</h1><button class="btn btn--line" id="back" type="button">← All posts</button></div>
+    <form id="post-form" class="editor" novalidate>
+      <div class="editor__main card-box">
+        <div class="field"><label for="p-title">Title</label><input id="p-title" required maxlength="160"></div>
+        <div class="field"><label for="p-content">Content (Markdown)</label>
+          <div class="tools" id="tools">
+            <button type="button" data-md="h2" title="Heading">H</button><button type="button" data-md="b" title="Bold"><b>B</b></button>
+            <button type="button" data-md="i" title="Italic"><i>I</i></button><button type="button" data-md="ul" title="List">• List</button>
+            <button type="button" data-md="link" title="Link">Link</button><button type="button" data-md="img" title="Upload & insert image">Image</button>
+            <button type="button" id="toggle-preview" class="push">Preview</button>
+          </div>
+          <textarea id="p-content" rows="18" placeholder="Write your article in Markdown…"></textarea>
+          <div class="prose preview" id="preview" hidden></div>
+        </div>
+      </div>
+      <aside class="editor__side card-box">
+        <div class="field"><label for="p-slug">URL slug</label><input id="p-slug" required maxlength="80"></div>
+        <div class="field"><label for="p-excerpt">Short summary</label><textarea id="p-excerpt" rows="3" maxlength="240"></textarea></div>
+        <div class="field"><label for="p-cover">Cover image</label><input id="p-cover" placeholder="https://… or upload" >
+          <button type="button" class="btn btn--line" id="upload-cover">Upload image</button>
+          <img id="cover-preview" class="cover-prev" alt="" hidden></div>
+        <div class="field"><label>Status</label><p id="p-status" class="muted">Draft</p></div>
+        <div class="side-actions">
+          <button class="btn btn--line" type="button" id="save-draft">Save draft</button>
+          <button class="btn" type="button" id="publish">Publish</button>
+          <button class="btn btn--line" type="button" id="unpublish" hidden>Unpublish</button>
+          <a class="btn btn--line" id="view-live" target="_blank" rel="noopener" hidden>View live</a>
+          <button class="btn btn--danger" type="button" id="delete" hidden>Delete</button>
+        </div>
+        <p class="status" id="edit-status" role="status"></p>
+      </aside>
+    </form>
+  </section>
+  <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+</main>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/blog-api.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>
