@@ -1,10 +1,9 @@
-/* Blog helpers: Supabase REST (no SDK), safe Markdown renderer, card template. */
+/* Blog helpers: loads posts from blog/posts.json, safe Markdown renderer, card template. */
 (function () {
   "use strict";
   var C = window.NITHIL_CONFIG || {};
-  var S = C.supabase || {};
 
-  function configured() { return !!(S.url && S.anonKey); }
+  function configured() { return true; }
   function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;"); }
   function fmtDate(d) {
     if (!d) return "";
@@ -12,21 +11,20 @@
   }
   function slugify(t) { return String(t).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80); }
 
-  function rest(path, opts, token) {
-    opts = opts || {};
-    var h = Object.assign({ apikey: S.anonKey, Authorization: "Bearer " + (token || S.anonKey) }, opts.headers || {});
-    return fetch(S.url.replace(/\/$/, "") + "/rest/v1/" + path, Object.assign({}, opts, { headers: h })).then(function (r) {
-      if (r.status === 204) return null;
-      return r.json().then(function (j) { if (!r.ok) throw new Error((j && (j.message || j.hint)) || "Request failed"); return j; });
-    });
+  var cache = null;
+  function all() {
+    if (!cache) {
+      var url = /\/blog\//.test(location.pathname) ? "posts.json" : "blog/posts.json";
+      cache = fetch(url, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error("posts"); return r.json(); })
+        .then(function (rows) {
+          return rows.filter(function (p) { return p && p.slug && p.title && p.status !== "draft"; })
+            .sort(function (a, b) { return new Date(b.published_at) - new Date(a.published_at); });
+        });
+    }
+    return cache;
   }
-
-  function listPublished(limit) {
-    return rest("posts?select=id,title,slug,excerpt,cover_image,published_at&status=eq.published&order=published_at.desc" + (limit ? "&limit=" + limit : ""));
-  }
-  function getBySlug(slug) {
-    return rest("posts?select=*&status=eq.published&slug=eq." + encodeURIComponent(slug) + "&limit=1").then(function (r) { return r[0] || null; });
-  }
+  function listPublished(limit) { return all().then(function (r) { return limit ? r.slice(0, limit) : r; }); }
+  function getBySlug(slug) { return all().then(function (r) { return r.filter(function (p) { return p.slug === slug; })[0] || null; }); }
 
   /* ----- Safe Markdown (input is HTML-escaped first; only a small whitelist is re-created) ----- */
   function safeUrl(u) { u = u.trim(); return /^(https?:\/\/|\/|\.\.?\/|mailto:|#)/i.test(u) ? u : "#"; }
@@ -71,5 +69,5 @@
       (p.excerpt ? "<p>" + esc(p.excerpt) + "</p>" : "") + "</a>";
   }
 
-  window.NithilBlog = { configured: configured, esc: esc, fmtDate: fmtDate, slugify: slugify, rest: rest, listPublished: listPublished, getBySlug: getBySlug, md: md, card: card };
+  window.NithilBlog = { configured: configured, esc: esc, fmtDate: fmtDate, slugify: slugify, listPublished: listPublished, getBySlug: getBySlug, md: md, card: card };
 })();

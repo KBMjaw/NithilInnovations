@@ -28,15 +28,13 @@ Keep all visible copy in `index.html`; to add Tamil later, duplicate it as `ta/i
 ## Google Maps
 The official Nithil Innovations embed is already set in the `.mapbox` iframe in `index.html`.
 
-## Blog + admin
-- Public: `/blog/` (list) and `/blog/post.html?slug=…` (article). Latest 3 posts also appear on the home page once something is published.
-- Admin: `/admin/` – sign in, write in Markdown (toolbar, preview, image upload), save draft / publish / unpublish / delete. Published posts go live immediately.
-- Backend: Supabase (Postgres + Auth + Storage), called directly from the browser; no server code.
-
-Setup (one time):
-1. Create a Supabase project, then Authentication → Users → **Add user** (admin email + password).
-2. Run `supabase/blog.sql` in the SQL Editor, then run the commented `insert into public.blog_admins …` line at the bottom with the admin email.
-3. Authentication → Sign In / Providers → turn **off** "Allow new users to sign up".
-4. Put the project URL and publishable (anon) key into `assets/js/config.js` → `supabase`.
-
-Only users listed in `blog_admins` can write (enforced by Row Level Security), so the anon key in `config.js` is safe to publish.
+## Blog
+- Public: `/blog/` (list) and `/blog/post.html?slug=…` (article). The latest 3 posts also appear on the home page once something is published (the section stays hidden while there are none).
+- Posts live in `blog/posts.json` (an array). To publish, add an entry and push:
+  ```json
+  { "slug": "my-first-post", "title": "My first post", "excerpt": "One-line summary.",
+    "cover_image": "../assets/img/ai.svg", "published_at": "2026-11-04",
+    "content": "## Heading\n\nMarkdown text with **bold**, [links](https://example.com) and lists." }
+  ```
+  Set `"status": "draft"` to hide a post. Content is Markdown (headings, bold/italic, links, lists, images, quotes, code).
+- An admin page (browser-based writing/publishing) was prototyped with Supabase and can be added later – see git history (commit "Add blog with admin page").
