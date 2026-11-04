@@ -56,7 +56,7 @@
   var globe = $("#globe");
   function loadGlobe() {
     var s = document.createElement("script");
-    s.src = "assets/vendor/globe.bundle.js";
+    s.src = "assets/vendor/globe.bundle.js?v=20261104";
     s.onload = function () { try { window.NithilGlobe.init(globe); } catch (e) {} };
     document.body.appendChild(s);
   }
