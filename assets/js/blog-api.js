@@ -63,10 +63,15 @@
   function card(p, base) {
     base = base || "";
     var href = base + "post.html?slug=" + encodeURIComponent(p.slug);
-    return '<a class="post-card" href="' + esc(href) + '">' +
-      (p.cover_image ? '<div class="post-card__img"><img src="' + esc(p.cover_image) + '" alt="" loading="lazy"></div>' : "") +
-      "<small>" + esc(fmtDate(p.published_at)) + "</small><h3>" + esc(p.title) + "</h3>" +
-      (p.excerpt ? "<p>" + esc(p.excerpt) + "</p>" : "") + "</a>";
+    return '<article class="post-card">' +
+      (p.cover_image ? '<a class="post-card__img" href="' + esc(href) + '" tabindex="-1" aria-hidden="true"><img src="' + esc(p.cover_image) + '" alt="" loading="lazy"></a>' : "") +
+      '<div class="post-card__content">' +
+      '<div class="post-card__eyebrows">' +
+      (p.category ? '<small class="post-card__category">' + esc(p.category) + "</small>" : "") +
+      (p.label ? '<small class="post-card__label">' + esc(p.label) + "</small>" : "") +
+      "</div><h2><a href=\"" + esc(href) + '">' + esc(p.title) + "</a></h2>" +
+      (p.excerpt ? "<p>" + esc(p.excerpt) + "</p>" : "") +
+      '<a class="post-card__link" href="' + esc(href) + '">Read Case Study <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div></article>';
   }
 
   window.NithilBlog = { configured: configured, esc: esc, fmtDate: fmtDate, slugify: slugify, listPublished: listPublished, getBySlug: getBySlug, md: md, card: card };

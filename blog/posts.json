@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "slug": "computer-vision-based-jaw-automation",
+    "title": "Computer Vision–Based Jaw Automation",
+    "category": "AI & Industrial Automation",
+    "label": "Case Study · KIPIPL",
+    "subtitle": "Real-time feeder monitoring and automated control for smarter jaw crusher operation.",
+    "excerpt": "How computer vision helps KIPIPL monitor feeder conditions and automate jaw crusher feeding.",
+    "cover_image": "../assets/img/Computer Vision–Based Jaw Automation.png",
+    "cover_alt": "Illustration of a jaw crusher monitored by a camera and AI system, with live feeder status and automated controls.",
+    "cover_caption": "Computer vision monitors feeder conditions for automated crusher control.",
+    "published_at": "2026-11-11",
+    "overview": "A CCTV-based vision system monitors feeder conditions in real time, helping automate jaw crusher operation and reduce manual monitoring.",
+    "overview_note": "At KIPIPL, innovation supports smarter mining and manufacturing.",
+    "sections": [
+      {
+        "kind": "challenge",
+        "label": "THE CHALLENGE",
+        "icon": "warning",
+        "headline": "Manual feeder monitoring caused inconsistent feeding, idle running, and overloading.",
+        "points": [
+          "Operators had to monitor feeding continuously.",
+          "Inconsistent feed disrupted production.",
+          "Idle operation consumed unnecessary energy.",
+          "Manual control limited automation."
+        ]
+      },
+      {
+        "kind": "innovation",
+        "label": "OUR INNOVATION",
+        "icon": "camera",
+        "headline": "AI and computer vision monitor feeder conditions through existing CCTV cameras.",
+        "content": "Live footage is classified into three feeder states:",
+        "states": ["Empty", "Partially filled", "Adequately filled"]
+      },
+      {
+        "kind": "solution",
+        "label": "THE NITHIL INNOVATIONS SOLUTION",
+        "icon": "settings",
+        "headline": "With KIPIPL, we developed an AI-powered crusher monitoring system.",
+        "content": "The model analyses live CCTV footage and pauses or resumes feeding according to detected feeder conditions and operating rules.",
+        "points": [
+          "Continuous CCTV monitoring.",
+          "AI-based feeder-state detection.",
+          "Automated feed-cycle control.",
+          "Industrial controls integration.",
+          "Reduced operator intervention."
+        ]
+      },
+      {
+        "kind": "impact",
+        "label": "THE IMPACT",
+        "icon": "impact",
+        "headline": "Self-regulating automation supports consistent, reliable crusher operation.",
+        "impact_items": [
+          { "title": "Reduced", "description": "Manual intervention", "icon": "people" },
+          { "title": "Improved", "description": "Operational efficiency", "icon": "chart" },
+          { "title": "Minimized", "description": "Unnecessary idle running", "icon": "bolt" },
+          { "title": "Enabled", "description": "Intelligent automation", "icon": "badge" }
+        ]
+      }
+    ],
+    "closing": "KIPIPL is advancing smarter mining by combining AI, computer vision, and automation for more efficient, reliable operations."
+  }
+]
